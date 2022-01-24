@@ -1,11 +1,11 @@
-from floodsystem.stationdata import build_station_list
 
-def stations_by_distance(stations, p):
-    stations_coordinates = []
-    stations = build_station_list()
-    for station in stations:
-        stations_coordinates.append(station.coord)
-        
-    print(stations_coordinates)
+from floodsystem.geo import stations_by_distance
+from floodsystem.station import MonitoringStation
+from floodsystem.geo import haversine
 
-stations_by_distance('Bourton Dickler', (0, 0))
+stations_by_distance(MonitoringStation, (0, 100))
+
+#(52.2053, 0.1218)
+
+
+
