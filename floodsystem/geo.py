@@ -9,6 +9,7 @@ geographical data.
 from .stationdata import build_station_list
 from math import radians, cos, sin, asin, sqrt
 from .station import MonitoringStation
+import sys
 #from .utils import sorted_by_key  # noqa
 
 def haversine(long1, lat1, long2, lat2):
@@ -35,6 +36,12 @@ def stations_by_distance(stations, p):
     long1 = p[1]
     rawlst = []
     sortbydist = []
+    if p[0] or p[1] >= 90.0:
+        sys.exit('Error: Latitude and longitude must both be less than 90')
+    elif p[0] or p[1] <= -90:
+        sys.exit('Error: Latitude and longitude must both be more than -90')
+        
+
     
     for station in stations:
         stations_coordinates.append(station.coord)
