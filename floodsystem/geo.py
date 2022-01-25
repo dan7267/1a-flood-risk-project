@@ -64,3 +64,17 @@ def stations_within_radius(stations, centre, r):
             Nearby_stations.append(station.name)
     print(Nearby_stations)
 
+
+def rivers_with_station(stations):
+    stations = build_station_list()
+    rivers = []
+    for station in stations:
+        if station.river in rivers:
+            pass
+        else:
+            rivers.append(station.river)
+    rivers.sort()
+    print(len(rivers), " rivers. First 10 -", rivers[:10])
+
+
+
