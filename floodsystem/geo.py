@@ -55,3 +55,12 @@ def stations_by_distance(stations, p):
     closest10 = sortbydist[:10]
     furthest10 = sortbydist[-10:]
     print(closest10, furthest10)
+
+def stations_within_radius(stations, centre, r):
+    Nearby_stations = []
+    stations = build_station_list()
+    for station in stations:
+        if haversine(centre[0], centre[1], station.coord[0], station.coord[1]) < r:
+            Nearby_stations.append(station.name)
+    print(Nearby_stations)
+
