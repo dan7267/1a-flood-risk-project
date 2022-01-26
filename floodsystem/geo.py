@@ -75,6 +75,23 @@ def rivers_with_station(stations):
             rivers.append(station.river)
     rivers.sort()
     print(len(rivers), " rivers. First 10 -", rivers[:10])
+    return rivers
+
+
+def stations_by_river(stations):
+    riverdict = {}
+    stations = build_station_list()
+    for station in stations:
+        if station.river in riverdict:
+            riverdict[station.river].append(station.name)
+        else:
+            riverdict[station.river] = [station.name]
+    print(sorted(riverdict["River Aire"]))
+    print(sorted(riverdict["River Cam"]))
+    print(sorted(riverdict["River Thames"]))
+
+
+
 
 
 
