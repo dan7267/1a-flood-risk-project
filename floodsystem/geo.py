@@ -89,6 +89,44 @@ def stations_by_river(stations):
     print(sorted(riverdict["River Aire"]))
     print(sorted(riverdict["River Cam"]))
     print(sorted(riverdict["River Thames"]))
+    return sorted(riverdict)
+
+def rivers_by_station_number(stations, N):
+    riverdict = {}
+    number = 0
+    #station_num = []
+    stations_by_num = []
+    rivers_by_station_number = []
+    stations = build_station_list()
+    for station in stations:
+        if station.river in riverdict:
+            #riverdict[station.river].append(station.name)
+            riverdict[station.river] += 1
+        else:
+            #riverdict[station.river] = [station.name]
+            riverdict[station.river] = 1
+    station_num = [(a ,b) for a, b in riverdict.items()]
+    
+    sorted_station_num = sorted(station_num, key=lambda tup: tup[1], reverse = True)
+    station_value = sorted_station_num[N-1][1]
+    for x in range(len(sorted_station_num)):
+        if  sorted_station_num[x][1] >= station_value:
+            rivers_by_station_number.append(sorted_station_num[x])
+        
+
+    print(rivers_by_station_number)
+    """#
+    station_num = list(riverdict.values())
+    print(station_num)
+    for x in range(len(station_num)):
+        number = len(station_num[x])
+        for station in stations:
+            stations_by_num.append((station.river, number))
+    #print(stations_by_num)"""
+
+      
+
+
 
 
 
