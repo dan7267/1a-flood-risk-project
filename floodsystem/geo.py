@@ -8,8 +8,8 @@ geographical data.
 
 from .stationdata import build_station_list
 from math import radians, cos, sin, asin, sqrt
-from .station import MonitoringStation
 import sys
+from .station import MonitoringStation
 #from .utils import sorted_by_key  # noqa
 
 def haversine(long1, lat1, long2, lat2):
@@ -36,13 +36,14 @@ def stations_by_distance(stations, p):
     long1 = p[1]
     rawlst = []
     sortbydist = []
-    if p[0] or p[1] >= 90.0:
-        sys.exit('Error: Latitude and longitude must both be less than 90')
-    elif p[0] or p[1] <= -90:
-        sys.exit('Error: Latitude and longitude must both be more than -90')
-        
-
-    
+    """
+    print(p[0])
+    print(p[1])
+    if float(p[0]) or float(p[1]) >= 90:
+        raise RuntimeError
+    elif float(p[0]) or float(p[1]) <= -90:
+        raise RuntimeError
+    """
     for station in stations:
         stations_coordinates.append(station.coord)
         #long1 is second coordinate of p
@@ -56,13 +57,18 @@ def stations_by_distance(stations, p):
     furthest10 = sortbydist[-10:]
     print(closest10, furthest10)
 
+        
 def stations_within_radius(stations, centre, r):
     Nearby_stations = []
+    Nearby_stations_info = []
     stations = build_station_list()
     for station in stations:
         if haversine(centre[0], centre[1], station.coord[0], station.coord[1]) < r:
             Nearby_stations.append(station.name)
+            Nearby_stations_info.append(haversine(centre[0], centre[1], station.coord[0], station.coord[1]))
     print(Nearby_stations)
+    print(Nearby_stations_info)
+    return Nearby_stations_info
 
 
 def rivers_with_station(stations):
@@ -89,7 +95,7 @@ def stations_by_river(stations):
     print(sorted(riverdict["River Aire"]))
     print(sorted(riverdict["River Cam"]))
     print(sorted(riverdict["River Thames"]))
-    return sorted(riverdict)
+    return riverdict
 
 def rivers_by_station_number(stations, N):
     riverdict = {}
@@ -115,16 +121,7 @@ def rivers_by_station_number(stations, N):
         
 
     print(rivers_by_station_number)
-    """#
-    station_num = list(riverdict.values())
-    print(station_num)
-    for x in range(len(station_num)):
-        number = len(station_num[x])
-        for station in stations:
-            stations_by_num.append((station.river, number))
-    #print(stations_by_num)"""
 
-      
 
 
 

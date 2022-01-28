@@ -1,0 +1,5 @@
+from floodsystem.station import MonitoringStation
+from floodsystem.station import inconsistent_typical_range_stations
+#from floodsystem.geo import inconsistent_typical_range_stations
+
+inconsistent_typical_range_stations(MonitoringStation)
