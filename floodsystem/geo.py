@@ -118,6 +118,7 @@ def rivers_by_station_number(stations, N):
     for x in range(len(sorted_station_num)):
         if  sorted_station_num[x][1] >= station_value:
             rivers_by_station_number.append(sorted_station_num[x])
+    return rivers_by_station_number
         
 
     print(rivers_by_station_number)
