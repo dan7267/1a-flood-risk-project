@@ -44,6 +44,7 @@ def stations_by_distance(stations, p):
         long2 = station.coord[1]
         rawlst.append((station.name, station.town, haversine(long1, lat1, long2, lat2)))
     sortbydist = sorted(rawlst, key=lambda tup: tup[2])
+    #ergverger
     return sortbydist
 
         
