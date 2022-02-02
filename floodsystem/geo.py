@@ -36,14 +36,6 @@ def stations_by_distance(stations, p):
     long1 = p[1]
     rawlst = []
     sortbydist = []
-    """
-    print(p[0])
-    print(p[1])
-    if float(p[0]) or float(p[1]) >= 90:
-        raise RuntimeError
-    elif float(p[0]) or float(p[1]) <= -90:
-        raise RuntimeError
-    """
     for station in stations:
         stations_coordinates.append(station.coord)
         #long1 is second coordinate of p
@@ -52,10 +44,7 @@ def stations_by_distance(stations, p):
         long2 = station.coord[1]
         rawlst.append((station.name, station.town, haversine(long1, lat1, long2, lat2)))
     sortbydist = sorted(rawlst, key=lambda tup: tup[2])
-    #print(stations_coordinates)
-    closest10 = sortbydist[:10]
-    furthest10 = sortbydist[-10:]
-    print(closest10, furthest10)
+    return sortbydist
 
         
 def stations_within_radius(stations, centre, r):

@@ -9,21 +9,18 @@ def test_haversine():
     assert round(haversine(0, 0, 60, 60)) - 8398 == 0
 
 def test_stations_by_distance():
-    x = 3
-    y = 4
-    print(stations_by_distance(MonitoringStation, (x, y)))
-    #sortbydist2 = stations_by_distance()
-    #assert sortbydist2[2][2] > sortbydist[1][2]
-    
-    
-    
-#x = 3
-#y = 4
-#assert stations_by_distance(MonitoringStation, (x, y))[2][2] < stations_by_distance(MonitoringStation, (x, y))[1][2]
-#print(stations_by_distance(MonitoringStation, (x, y))[2][2])
+    x = 52.2053
+    y = 0.1218
+    lst5 = stations_by_distance(MonitoringStation, (x, y))
 
-test_stations_by_distance()
-test_haversine()
+    lst6 = [item for t in lst5 for item in t]
+    print(lst6)
+    lst7 = []
+    for i in range(len(lst6)):
+        if type(lst6[i]) == float:
+            lst7.append(lst6[i])
+    for i in range(len(lst7)-1):
+        assert lst7[i] <= lst7[i+1]
 
 
     

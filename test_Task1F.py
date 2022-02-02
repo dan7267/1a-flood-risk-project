@@ -7,4 +7,3 @@ def test_typical_range_consistent():
     for station in stations:
         if station.typical_range == None:
             assert typical_range_consistent(MonitoringStation) == False
-            
