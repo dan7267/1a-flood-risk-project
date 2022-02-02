@@ -31,6 +31,8 @@ def haversine(long1, lat1, long2, lat2):
     inidnvionsdinvoin
 
 def stations_by_distance(stations, p):
+    """Returns a list of tuples containing the station name, its nearest town
+     and the distance from a specific coordinate in order of the distance"""
     stations_coordinates = []
     stations = build_station_list()
     lat1 = p[0]
@@ -50,6 +52,7 @@ def stations_by_distance(stations, p):
 
         
 def stations_within_radius(stations, centre, r):
+    """Creates a list of all the stations within a radius r of a centre"""
     Nearby_stations = []
     Nearby_stations_info = []
     stations = build_station_list()
@@ -57,12 +60,11 @@ def stations_within_radius(stations, centre, r):
         if haversine(centre[0], centre[1], station.coord[0], station.coord[1]) < r:
             Nearby_stations.append(station.name)
             Nearby_stations_info.append(haversine(centre[0], centre[1], station.coord[0], station.coord[1]))
-    print(Nearby_stations)
-    print(Nearby_stations_info)
     return Nearby_stations_info
 
 
 def rivers_with_station(stations):
+    '''Returns the number of rivers with at least one station'''
     stations = build_station_list()
     rivers = []
     for station in stations:
@@ -71,11 +73,11 @@ def rivers_with_station(stations):
         else:
             rivers.append(station.river)
     rivers.sort()
-    print(len(rivers), " rivers. First 10 -", rivers[:10])
     return rivers
 
 
 def stations_by_river(stations):
+    '''Returns a dictionary with the keys being the river names and the value being all of the stations on that river'''
     riverdict = {}
     stations = build_station_list()
     for station in stations:
@@ -83,12 +85,12 @@ def stations_by_river(stations):
             riverdict[station.river].append(station.name)
         else:
             riverdict[station.river] = [station.name]
-    print(sorted(riverdict["River Aire"]))
-    print(sorted(riverdict["River Cam"]))
-    print(sorted(riverdict["River Thames"]))
     return riverdict
 
 def rivers_by_station_number(stations, N):
+    '''Returns a list tuples of the river names and the number of stations on each, 
+    of length N of the rivers with the most stations.
+     If the Nth station value is tied all rivers with the tied value will also be printed'''
     riverdict = {}
     number = 0
     #station_num = []
