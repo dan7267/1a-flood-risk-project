@@ -1,6 +1,11 @@
 from floodsystem.stationdata import MonitoringStation
 from floodsystem.geo import rivers_by_station_number
 
-rivers_by_station_number(MonitoringStation, 7)
+def run():
+    rivers_station_number = rivers_by_station_number(MonitoringStation, 9)
+    print(rivers_station_number)
 
-#test to check number of staions on lowest river matches that printed.
+
+if __name__ == "__main__":
+    print("*** Task 1A: CUED Part IA Flood Warning System ***")
+    run()

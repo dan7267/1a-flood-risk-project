@@ -28,7 +28,6 @@ def haversine(long1, lat1, long2, lat2):
     r = 6371 # Radius of earth in kilometers. Use 3956 for miles. Determines return value units.
     distance = c*r
     return distance
-    inidnvionsdinvoin
 
 def stations_by_distance(stations, p):
     """Returns a list of tuples containing the station name, its nearest town
@@ -47,7 +46,6 @@ def stations_by_distance(stations, p):
         long2 = station.coord[1]
         rawlst.append((station.name, station.town, haversine(long1, lat1, long2, lat2)))
     sortbydist = sorted(rawlst, key=lambda tup: tup[2])
-    #ergverger
     return sortbydist
 
         
