@@ -1,9 +1,12 @@
 from floodsystem.station import MonitoringStation
-#from floodsystem.station import typical_range_consistent
+from floodsystem.station import *
 from floodsystem.stationdata import build_station_list
 
 def test_typical_range_consistent():
-    stations = build_station_list()
-    for station in stations:
-        if station.typical_range == None:
-            assert typical_range_consistent(MonitoringStation) == False
+    station = MonitoringStation(None, None, None, None, None, None, None)
+    station.typical_range = (2, 3)
+    assert station.typical_range_consistent() == True
+    station.typical_range = (3, 2)
+    assert station.typical_range_consistent() == False
+test_typical_range_consistent()
+

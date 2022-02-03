@@ -8,7 +8,6 @@ geographical data.
 
 from .stationdata import build_station_list
 from math import radians, cos, sin, asin, sqrt
-import sys
 from .station import MonitoringStation
 #from .utils import sorted_by_key  # noqa
 
@@ -47,7 +46,6 @@ def stations_by_distance(stations, p):
         rawlst.append((station.name, station.town, haversine(long1, lat1, long2, lat2)))
     sortbydist = sorted(rawlst, key=lambda tup: tup[2])
     return sortbydist
-
         
 def stations_within_radius(stations, centre, r):
     """Creates a list of all the stations within a radius r of a centre"""
@@ -58,8 +56,7 @@ def stations_within_radius(stations, centre, r):
         if haversine(centre[0], centre[1], station.coord[0], station.coord[1]) < r:
             Nearby_stations.append(station.name)
             Nearby_stations_info.append(haversine(centre[0], centre[1], station.coord[0], station.coord[1]))
-    return Nearby_stations_info
-
+    return Nearby_stations
 
 def rivers_with_station(stations):
     '''Returns the number of rivers with at least one station'''
@@ -72,7 +69,6 @@ def rivers_with_station(stations):
             rivers.append(station.river)
     rivers.sort()
     return rivers
-
 
 def stations_by_river(stations):
     '''Returns a dictionary with the keys being the river names and the value being all of the stations on that river'''
@@ -91,16 +87,13 @@ def rivers_by_station_number(stations, N):
      If the Nth station value is tied all rivers with the tied value will also be printed'''
     riverdict = {}
     number = 0
-    #station_num = []
     stations_by_num = []
     rivers_by_station_number = []
     stations = build_station_list()
     for station in stations:
         if station.river in riverdict:
-            #riverdict[station.river].append(station.name)
             riverdict[station.river] += 1
         else:
-            #riverdict[station.river] = [station.name]
             riverdict[station.river] = 1
     station_num = [(a ,b) for a, b in riverdict.items()]
     
@@ -112,7 +105,6 @@ def rivers_by_station_number(stations, N):
     return rivers_by_station_number
         
 
-    print(rivers_by_station_number)
 
 
 

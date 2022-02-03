@@ -1,5 +1,11 @@
 from floodsystem.station import MonitoringStation
 from floodsystem.station import inconsistent_typical_range_stations
-#from floodsystem.geo import inconsistent_typical_range_stations
 
-inconsistent_typical_range_stations(MonitoringStation)
+def run():
+    """Requirements for Tasl_1F"""
+    print(inconsistent_typical_range_stations(MonitoringStation))
+
+if __name__ == "__main__":
+    print("*** Task 1A: CUED Part IA Flood Warning System ***")
+    run()
+

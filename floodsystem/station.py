@@ -40,7 +40,7 @@ class MonitoringStation:
         return d
     
     def typical_range_consistent(self):
-        '''Returning False if Typical range is none existant or is inconsistant otherwise returning true'''
+        '''Returning False if Typical range is non-existant or is inconsistent otherwise returning true'''
         if self.typical_range == None:
             return False
         elif self.typical_range[0] > self.typical_range[1]:
@@ -49,14 +49,14 @@ class MonitoringStation:
             return True
 
 def inconsistent_typical_range_stations(stations):
-    '''Prints a list of stations where ther data is inconsistant'''
+    '''Prints a list of stations with inconsistent data'''
     from .stationdata import build_station_list
     stations = build_station_list()
     inconsistent_stations = []
     for station in stations:
         if MonitoringStation.typical_range_consistent(station) == False:
             inconsistent_stations.append(station.name)
-    print(inconsistent_stations)
+    return inconsistent_stations
     
 
 
