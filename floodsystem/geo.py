@@ -50,12 +50,10 @@ def stations_by_distance(stations, p):
 def stations_within_radius(stations, centre, r):
     """Creates a list of all the stations within a radius r of a centre"""
     Nearby_stations = []
-    Nearby_stations_info = []
     stations = build_station_list()
     for station in stations:
         if haversine(centre[0], centre[1], station.coord[0], station.coord[1]) < r:
             Nearby_stations.append(station.name)
-            Nearby_stations_info.append(haversine(centre[0], centre[1], station.coord[0], station.coord[1]))
     return Nearby_stations
 
 def rivers_with_station(stations):
