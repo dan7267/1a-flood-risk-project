@@ -45,9 +45,15 @@ class MonitoringStation:
             return False
         elif self.typical_range[0] > self.typical_range[1]:
             return False
+        elif self.latest_level == None:
+            return False
         else:
             return True
-
+    
+    def relative_water_level(self):
+        ratio = (self.latest_level - self.typical_range[0])/(self.typical_range[1]-self.typical_range[0])
+        return ratio
+    
 def inconsistent_typical_range_stations(stations):
     '''Prints a list of stations with inconsistent data'''
     from .stationdata import build_station_list
