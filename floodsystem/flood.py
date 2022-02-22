@@ -13,6 +13,18 @@ def stations_level_over_threshold(stations, tol):
     floods = sorted(floods, key=lambda tup: tup[1], reverse = True)
     return floods
 
+def stations_highest_rel_level(stations, N):
+    Stations_at_risk = []
+    Most_at_risk = []
+    stations = build_station_list()
+    update_water_levels(stations)
+    for station in stations:
+        if station.typical_range_consistent() == True:
+            Stations_at_risk.append((station.name,station.relative_water_level()))
+    Stations_at_risk = sorted(Stations_at_risk, key=lambda tup: tup[1], reverse = True)
+    Most_at_risk = Stations_at_risk[0:N]
+    return Most_at_risk
+
 '''def stations_level_over_threshold(stations, tol):
     floods = []
     sortedfloods = []
