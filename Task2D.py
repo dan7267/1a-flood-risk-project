@@ -36,7 +36,7 @@ def run():
     # except StopIteration:
     #     print("Station {} could not be found".format(station_name))
     #     return
-
+    print(station_cam)
     # Fetch data over past 2 days
     dt = 2
     dates, levels = fetch_measure_levels(
