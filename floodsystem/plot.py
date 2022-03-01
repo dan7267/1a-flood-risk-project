@@ -1,10 +1,12 @@
+import matplotlib
 import matplotlib.pyplot as plt
 import datetime
 from floodsystem.station import MonitoringStation
 from .stationdata import build_station_list
-
+import numpy as np
 from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.flood import stations_highest_rel_level
+from floodsystem.analysis import polyfit
 
 
 def plot_water_levels(station, dates, levels):
@@ -62,3 +64,34 @@ def plot_water_levels(station, dates, levels):
         plt.tight_layout()  # This makes sure plot does not cut off date labels
 
         plt.show()
+
+def plot_water_level_with_fit(station, dates, levels, p):
+    """
+    stations = build_station_list()
+    for s in stations:
+    """
+    print(station)
+    x = np.array(matplotlib.dates.date2num(dates))
+    plt.plot(x, levels)
+    x1 = np.linspace(x[0], x[-1], len(levels))
+    tup = polyfit(dates, levels, p)[0]
+    plt.plot(x1, tup(x1-x[0]))
+    plt.axhline(y=station.typical_range[0], color='b', linestyle='-')
+    plt.axhline(y=station.typical_range[1], color='r', linestyle='-')
+    plt.title(station)
+    plt.tight_layout()
+    plt.xlabel('date')
+    plt.ylabel('water level (m)')
+    plt.xticks(rotation=45);
+    plt.show()
+        
+    """"
+    for s in station:
+        plt.axhline(y=station.typical_range[0], color='b', linestyle='-')
+        plt.axhline(y=station.typical_range[1], color='r', linestyle='-')
+"""
+    
+
+
+    """p_coeff = np.polyfit(x-x[0], levels, p)
+    poly = np.poly1d(p_coeff)"""
