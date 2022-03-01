@@ -7,5 +7,5 @@ def run():
     print(sorted(Nearby_stations_info))
 
 if __name__ == "__main__":
-    print("*** Task 1A: CUED Part IA Flood Warning System ***")
+    print("*** Task 1C: CUED Part IA Flood Warning System ***")
     run()

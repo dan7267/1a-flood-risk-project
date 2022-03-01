@@ -6,6 +6,7 @@ from floodsystem.stationdata import build_station_list, update_water_levels
 
 
 def run():
+    """Requirements for Task2A"""
     # Build list of stations
     stations = build_station_list()
 

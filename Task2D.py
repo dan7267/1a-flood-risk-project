@@ -9,6 +9,7 @@ from floodsystem.stationdata import build_station_list
 
 
 def run():
+    """Requirements for Task2D"""
 
     # Build list of stations
     stations = build_station_list()

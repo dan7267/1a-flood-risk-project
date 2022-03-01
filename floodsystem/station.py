@@ -51,6 +51,9 @@ class MonitoringStation:
             return True
     
     def relative_water_level(self):
+        """A method which returns the latest water level as a fraction of the typical range, where a ratio
+        of 1.0 corresponds to a level at the typical high and a ratio of 0.0 corresponds to a level at the
+        typical low"""
         ratio = (self.latest_level - self.typical_range[0])/(self.typical_range[1]-self.typical_range[0])
         return ratio
     

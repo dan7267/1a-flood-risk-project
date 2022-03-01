@@ -10,6 +10,8 @@ from floodsystem.analysis import polyfit
 
 
 def plot_water_levels(station, dates, levels):
+    """A function which displays a plot of the water level data against time for a station,
+    including the typical low and high values"""
 
     Highest_risk_stations = stations_highest_rel_level(MonitoringStation, levels)
     stations = build_station_list()
@@ -66,10 +68,14 @@ def plot_water_levels(station, dates, levels):
         plt.show()
 
 def plot_water_level_with_fit(station, dates, levels, p):
+    """Plots the water level against time along with the polynomial which fits the data of order 4 and the #
+typical high and low range"""
+
+
     """
     stations = build_station_list()
     for s in stations:
-    """
+"""
     print(station)
     x = np.array(matplotlib.dates.date2num(dates))
     plt.plot(x, levels)
