@@ -2,10 +2,18 @@ from floodsystem.analysis import polyfit
 from floodsystem.plot import plot_water_level_with_fit
 from floodsystem.station import MonitoringStation
 import numpy as np
+from floodsystem.datafetcher import fetch_measure_levels
+import datetime
+
+from floodsystem.stationdata import build_station_list, update_water_levels
 
 def test_polyfit():
-    assert type(polyfit(10, 5, 4)) == np.poly1d
-
-
-def test_plot_water_level_with_fit():
-    plot_water_level_with_fit(MonitoringStation, 10, 5, 4)
+    stations = build_station_list()
+    update_water_levels(stations)
+    for station in stations:
+        if station.name == "Cambridge Jesus Lock":
+            dt = 10
+            dates, levels = fetch_measure_levels(
+                station.measure_id, dt = datetime.timedelta(days=dt))
+            a = polyfit(dates, levels, 4)
+    assert type(a[0]) == np.poly1d

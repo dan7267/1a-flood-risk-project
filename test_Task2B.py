@@ -1,10 +1,15 @@
 from floodsystem.flood import stations_level_over_threshold
 from floodsystem.station import MonitoringStation
 from floodsystem.station import *
+from floodsystem.stationdata import build_station_list, update_water_levels
 
 def test_relative_water_level():
-    station = MonitoringStation(None, None, None, None, None, None, None, None)
-    assert type(station.relative_water_level) == float
+    
+    stations = build_station_list()
+    update_water_levels(stations)
+    for station in stations:
+        if station.name == 'Cambridge Jesus Lock':
+            assert type(station.relative_water_level()) == float
 
 
 def test_stations_level_over_threshold():

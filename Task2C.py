@@ -1,5 +1,4 @@
 from floodsystem.station import MonitoringStation
-from floodsystem.stationdata import update_water_levels
 from floodsystem.flood import stations_highest_rel_level
 
 

@@ -9,8 +9,5 @@ def test_rivers_with_station():
 def test_stations_by_river():
     dct1 = stations_by_river(MonitoringStation)
     assert type(dct1) == dict
-    """dct2 = sorted(stations_by_river(MonitoringStation))
-    for values in dct1:
-        dct1[values]"""
 
 
